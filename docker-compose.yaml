@@ -1,0 +1,16 @@
+version: '2'
+services:
+  sockvpn:
+    image: sockvpn
+    build:
+        context: .
+        dockerfile: Dockerfile
+    devices:
+    - /dev/net/tun:/dev/net/tun:rwm
+    volumes:
+    - ./config:/vpn
+    ports:
+    - 1080:1080
+    cap_add:
+    - NET_ADMIN
+    restart: always

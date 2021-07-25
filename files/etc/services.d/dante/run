@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+tun0up=127
+while [ $tun0up -ne 0 ]; do
+    ip link show tun0 > /dev/null 2>&1
+    tun0up=$?
+    sleep 1
+done
+
+sockd
